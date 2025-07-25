@@ -37,7 +37,10 @@ This project is a **Bank Lending System** built using **Node.js**, **Express.js*
 ```bash
 bank-lending-system-assignment/
 │
-├── app.js                 # Main Express application
-├── bankDatabase.db        # SQLite database file
+├── app.js
+├── bankDatabase.db     #SQLite database
 ├── package.json
-└── README.md              
+├── package-lock.json
+├── .gitignore
+├── README.md
+          
