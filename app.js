@@ -80,6 +80,21 @@ const valid_inputs = (req, res, next) => {
   next();
 };
 
+//Extra part -> Creating customers
+app.post("/api/v1/customers", async (req, res) => {
+  const { name } = req.body;
+
+  if (typeof name !== "string" || name.trim() === "") {
+    return res.status(400).send({ error: "Invalid customer name" });
+  }
+
+  const customer_id = uuidv4();
+  const query = `INSERT INTO Customers (customer_id, name) VALUES ('${customer_id}', '${name}')`;
+
+  await db.run(query);
+  res.send("Customer Created successfully");
+});
+
 //This is creating a loan(2.1)
 app.post("/api/v1/loans", valid_inputs, async (req, res) => {
   const { customer_id, loan_amount, loan_period_years, interest_rate_yearly } =
